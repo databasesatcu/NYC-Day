@@ -13,7 +13,16 @@ var config = require('./config/environment');
 var app = express();
 var server = require('http').createServer(app);
 require('./config/express')(app);
-require('./routes')(app);
+
+var mysql = require('mysql');
+var connection = mysql.createConnection({
+  host     : "cs4111.clq7wmdnlcyp.us-west-2.rds.amazonaws.com" ,
+  user     : "gml2153" ,
+  password : "cs4111cs4111" ,
+  database : "cs4111"
+});
+
+require('./routes')(app, connection);
 
 // Start server
 server.listen(config.port, config.ip, function () {
