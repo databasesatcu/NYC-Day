@@ -16,9 +16,8 @@ require('./config/express')(app);
 
 var mysql = require('mysql');
 var connection = mysql.createConnection({
-  host     : "cs4111.clq7wmdnlcyp.us-west-2.rds.amazonaws.com" ,
-  user     : "gml2153" ,
-  password : "cs4111cs4111" ,
+  host     : "localhost",
+  user     : "local",
   database : "cs4111"
 });
 
