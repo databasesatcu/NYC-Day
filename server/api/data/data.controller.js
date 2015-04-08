@@ -9,7 +9,7 @@ exports.allRows = function (req, res) {
   pool.query(query, function(err, rows, field) {
   
   if (!err) {
-    console.log('Neighborhoods requested!');
+    console.log(req.params.item + ' requested!');
     res.json(rows);
   } else
     console.log('Error while performing Query.');
