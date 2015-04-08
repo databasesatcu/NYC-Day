@@ -11,19 +11,8 @@ module.exports = function(app) {
   // Insert routes below
   app.use('/api/things', require('./api/thing'));
 
-  // MySQL routes
-  // app.route('/data')
-  //   .get(function(req, res) {
-    
-  //     pool.query("SELECT * FROM neighborhood", function(err, rows, field) {
-  //       if (!err) {
-  //         console.log('Neighborhoods requested!');
-  //         res.json(rows);
-  //       } else
-  //         console.log('Error while performing Query.');
-  //       });
-    
-  //   });
+
+
   app.use('/api/data', require ('./api/data'));
  
   
