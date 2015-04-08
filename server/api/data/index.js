@@ -5,6 +5,6 @@ var controller = require('./data.controller');
 
 var router = express.Router();
 
-router.get('/', controller.index);
+router.get('/:item', controller.allRows);
 
 module.exports = router;

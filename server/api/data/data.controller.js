@@ -2,9 +2,10 @@
 
 var pool = require('../../database');
 
-exports.index = function (req, res) {
+exports.allRows = function (req, res) {
   
-  pool.query("SELECT * FROM neighborhood", function(err, rows, field) {
+  var query = "SELECT * FROM " + req.params.item;
+  pool.query(query, function(err, rows, field) {
   
   if (!err) {
     console.log('Neighborhoods requested!');
