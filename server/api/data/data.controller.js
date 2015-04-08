@@ -20,7 +20,7 @@ exports.allRows = function (req, res) {
 };
 
 exports.neighborhoodMuseums = function (req, res) {
-    var query = "SELECT * FROM neighborhood N, area_museum M WHERE N.nid = M.nid";
+    var query = "SELECT area_name, museum_name, style FROM neighborhood N, area_museum M WHERE N.nid = M.nid";
     pool.query(query, function(err, rows, field) {
     	if (!err) {
     		console.log('Museums within neighborhood requested!');
