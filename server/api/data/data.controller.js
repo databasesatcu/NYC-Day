@@ -1,6 +1,7 @@
 'use strict';
 
-var pool = require('../../database');
+var pool = require('../../components/database');
+var errors = require('../../components/errors')
 
 exports.allRows = function (req, res) {
   
