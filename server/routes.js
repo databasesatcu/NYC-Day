@@ -6,7 +6,7 @@
 
 var errors = require('./components/errors');
 
-module.exports = function(app, connection) {
+module.exports = function(app, pool) {
 
   // Insert routes below
   app.use('/api/things', require('./api/thing'));
@@ -14,20 +14,14 @@ module.exports = function(app, connection) {
   // MySQL routes
   app.route('/data')
     .get(function(req, res) {
-      connection.connect(function(err){
-        if(!err) {
-          console.log("Database is connected ... \n\n");  
-        } else {
-          console.log("Error connecting database ... \n\n");  
-        }
-      });
-      connection.query("SELECT * FROM neighborhood", function(err, rows, field) {
-        connection.end();
+    
+      pool.query("SELECT * FROM neighborhood", function(err, rows, field) {
         if (!err)
-                console.log('The solution is: ', rows);
+          res.json(rows);
         else
-                console.log('Error while performing Query.');
+          console.log('Error while performing Query.');
         });
+    
     });
  
   

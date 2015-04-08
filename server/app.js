@@ -15,13 +15,13 @@ var server = require('http').createServer(app);
 require('./config/express')(app);
 
 var mysql = require('mysql');
-var connection = mysql.createConnection({
-  host     : "localhost",
-  user     : "local",
-  database : "cs4111"
+var pool = mysql.createPool({
+  host     : 'localhost',
+  user     : 'local',
+  database : 'cs4111'
 });
 
-require('./routes')(app, connection);
+require('./routes')(app, pool);
 
 // Start server
 server.listen(config.port, config.ip, function () {
