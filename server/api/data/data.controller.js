@@ -1,6 +1,7 @@
 'use strict';
 
-var pool = require('../../database');
+var pool = require('../../components/database');
+var errors = require('../../components/errors')
 
 exports.allRows = function (req, res) {
   
@@ -9,7 +10,7 @@ exports.allRows = function (req, res) {
   pool.query(query, function(err, rows, field) {
   
   if (!err) {
-    console.log('Completed request!');
+    console.log(req.params.item + ' requested!');
     res.json(rows);
   } else
     console.log('Error while performing Query.');
