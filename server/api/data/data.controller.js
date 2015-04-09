@@ -80,3 +80,15 @@ exports.cuisine = function (req, res) {
   	});
 };
 
+exports.gallery = function (req, res) {
+    var query = "SELECT gallery_name as gallery FROM gallery;";
+    pool.query(query, function(err, rows, field) {
+    	if (!err) {
+    		console.log('Cuisines requested!');
+    		res.json(rows);
+  		} else
+    		console.log('Error while performing Query.');
+ 
+  	});
+};
+

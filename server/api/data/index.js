@@ -10,6 +10,7 @@ router.get('/neighborhoodmuseums', controller.neighborhoodMuseums);
 router.get('/neighborhoodfoodtruck', controller.neighborhoodFoodTruck);
 router.get('/neighborhoodrestaurant', controller.neighborhoodRestaurant);
 router.get('/museumgallery', controller.museumGallery);
+router.get('/gallerylist', controller.gallery);
 router.get('/cuisines', controller.cuisine);
 router.get('/:item', controller.allRows);
 
