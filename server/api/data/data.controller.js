@@ -42,7 +42,7 @@ exports.basicsearch = function (req, res) {
     		res.json(rows);
   		} else
     		console.log('Error while performing Query.');
-    		console.log(req);
+    		console.log(req.body);
  
   	});
 };
