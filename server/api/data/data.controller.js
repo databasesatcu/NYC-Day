@@ -51,7 +51,7 @@ exports.searchmuseum = function (req, res) {
 };
 
 exports.searchmuseumgallery = function (req, res) {
-    var query = "SELECT area_name, museum_name, gallery_name, style FROM area_museum M, gallery G, gallery_showcases S, neighborhood N  WHERE G.gallery_id = S.gallery_id and M.museum_id = S.museum_id and N.nid = M.nid AND area_name = '" + req.body.neighborhood.area_name + "' and gallery_name = '" + "'";
+    var query = "SELECT area_name, museum_name, gallery_name, style FROM area_museum M, gallery G, gallery_showcases S, neighborhood N  WHERE G.gallery_id = S.gallery_id and M.museum_id = S.museum_id and N.nid = M.nid AND area_name = '" + req.body.neighborhood.area_name + "' and gallery_name = '" + req.body.gallery.gallery_name + "'";
     pool.query(query, function(err, rows, field) {
     	if (!err) {
     		console.log('Neighborhood requested!');
