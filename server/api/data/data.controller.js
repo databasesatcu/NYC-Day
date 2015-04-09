@@ -89,7 +89,7 @@ exports.searchrestaurantcuisine = function (req, res) {
 };
 
 exports.searchfoodtruckcuisine = function (req, res) {
-    var query = "SELECT area_name, truck_name, cuisine, trajectory FROM neighborhood N, area_food_truck F WHERE N.nid = F.nid; AND area_name = '" + req.body.neighborhood.area_name + "' and cuisine = '" + req.body.cusine.cuisine + "'";
+    var query = "SELECT area_name, truck_name, cuisine, trajectory FROM neighborhood N, area_food_truck F WHERE N.nid = F.nid; AND area_name = '" + req.body.neighborhood.area_name + "' and cuisine = '" + req.body.cuisine.cuisine + "'";
     pool.query(query, function(err, rows, field) {
     	if (!err) {
     		console.log('Neighborhood requested!');
