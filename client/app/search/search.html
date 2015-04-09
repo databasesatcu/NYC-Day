@@ -6,8 +6,7 @@
     </div>
     <div class="form-group">
       <label for="neighborhood">Neighborhood:</label>
-      <select class="form-control" id="neighborhood" ng-model="userNeighborhood" required>
-
+      <select class="form-control" id="neighborhood" ng-model="userNeighborhood" ng-options="place.area_name for place in neighborhoods" required>
       </select>
     </div>
   </form>
