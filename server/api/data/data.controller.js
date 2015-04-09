@@ -44,7 +44,7 @@ exports.searchgallery = function (req, res) {
 };
 
 exports.searchmuseum = function (req, res) {
-    var query = "SELECT area_name, museum_name, gallery_name, style FROM area_museum M, gallery G, gallery_showcases S, neighborhood N  WHERE G.gallery_id = S.gallery_id and M.museum_id = S.museum_id and N.nid = M.nid AND area_name = '" + req.body.neighborhood.area_name + "'";
+    var query = "SELECT area_name, museum_name, gallery_name, style FROM area_museum M, gallery G, gallery_showcases S, neighborhood N  WHERE G.gallery_id = S.gallery_id and M.museum_id = S.museum_id and N.nid = M.nid AND area_name = \"" + req.body.neighborhood.area_name + "\"";
     pool.query(query, function(err, rows, field) {
     	if (!err) {
     		console.log('Neighborhood requested!');
@@ -63,7 +63,7 @@ exports.searchmuseum = function (req, res) {
 };
 
 exports.searchmuseumgallery = function (req, res) {
-    var query = "SELECT area_name, museum_name, gallery_name, style FROM area_museum M, gallery G, gallery_showcases S, neighborhood N  WHERE G.gallery_id = S.gallery_id and M.museum_id = S.museum_id and N.nid = M.nid AND area_name = '" + req.body.neighborhood.area_name + "' and gallery_name = '" + req.body.gallery.gallery_name + "'";
+    var query = "SELECT area_name, museum_name, gallery_name, style FROM area_museum M, gallery G, gallery_showcases S, neighborhood N  WHERE G.gallery_id = S.gallery_id and M.museum_id = S.museum_id and N.nid = M.nid AND area_name = \"" + req.body.neighborhood.area_name + "\" and gallery_name = '" + req.body.gallery.gallery_name + "'";
     pool.query(query, function(err, rows, field) {
     	if (!err) {
     		console.log('Neighborhood requested!');
@@ -82,7 +82,7 @@ exports.searchmuseumgallery = function (req, res) {
 };
 
 exports.searchrestaurant = function (req, res) {
-    var query = "SELECT area_name, restaurant_name, cuisine, address FROM neighborhood N, area_restaurants R WHERE N.nid = R.nid AND area_name = '" + req.body.neighborhood.area_name + "'";
+    var query = "SELECT area_name, restaurant_name, cuisine, address FROM neighborhood N, area_restaurants R WHERE N.nid = R.nid AND area_name = \"" + req.body.neighborhood.area_name + "\"";
     pool.query(query, function(err, rows, field) {
     	if (!err) {
     		console.log('Neighborhood requested!');
@@ -101,7 +101,7 @@ exports.searchrestaurant = function (req, res) {
 };
 
 exports.searchrestaurantcuisine = function (req, res) {
-    var query = "SELECT area_name, restaurant_name, cuisine, address FROM neighborhood N, area_restaurants R WHERE N.nid = R.nid AND area_name = '" + req.body.neighborhood.area_name + "' and cuisine = '" + req.body.cuisine.cuisine + "'";
+    var query = "SELECT area_name, restaurant_name, cuisine, address FROM neighborhood N, area_restaurants R WHERE N.nid = R.nid AND area_name = \"" + req.body.neighborhood.area_name + "\" and cuisine = '" + req.body.cuisine.cuisine + "'";
     pool.query(query, function(err, rows, field) {
     	if (!err) {
     		console.log('Neighborhood requested!');
@@ -120,7 +120,7 @@ exports.searchrestaurantcuisine = function (req, res) {
 };
 
 exports.searchfoodtruckcuisine = function (req, res) {
-    var query = "SELECT area_name, truck_name, cuisine, trajectory FROM neighborhood N, area_food_truck F WHERE N.nid = F.nid AND area_name = '" + req.body.neighborhood.area_name + "' and cuisine = '" + req.body.cuisine.cuisine + "'";
+    var query = "SELECT area_name, truck_name, cuisine, trajectory FROM neighborhood N, area_food_truck F WHERE N.nid = F.nid AND area_name = \"" + req.body.neighborhood.area_name + "\" and cuisine = '" + req.body.cuisine.cuisine + "'";
     pool.query(query, function(err, rows, field) {
     	if (!err) {
     		console.log('Neighborhood requested!');
@@ -139,7 +139,7 @@ exports.searchfoodtruckcuisine = function (req, res) {
 };
 
 exports.searchfoodtruck = function (req, res) {
-    var query = "SELECT area_name, truck_name, cuisine, trajectory FROM neighborhood N, area_food_truck F WHERE N.nid = F.nid AND area_name = '" + req.body.neighborhood.area_name + "'";
+    var query = "SELECT area_name, truck_name, cuisine, trajectory FROM neighborhood N, area_food_truck F WHERE N.nid = F.nid AND area_name = \"" + req.body.neighborhood.area_name + "\"";
     pool.query(query, function(err, rows, field) {
     	if (!err) {
     		console.log('Neighborhood requested!');
