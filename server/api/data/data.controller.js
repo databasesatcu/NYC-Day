@@ -36,12 +36,13 @@ exports.basicsearch = function (req, res) {
     pool.query(query, function(err, rows, field) {
     	if (!err) {
     		console.log('Neighborhood requested!');
-    		
+
     		console.log(rows);
 
     		res.json(rows);
   		} else
     		console.log('Error while performing Query.');
+    		console.log(req);
  
   	});
 };
