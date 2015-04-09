@@ -37,7 +37,7 @@ angular.module('nycDayApp')
 
       $http.post('/api/data/newusers', {
           username  : $scope.user.email,
-          interests : $scope.user.interests
+          interests : $scope.user.cuisine
         }).success(function () {
             console.log("new user entered!");
           });
