@@ -45,9 +45,35 @@
   </form>
 
   <div class="container" ng-show="showResult">
+    <div class="row">
+      <h2>Best Match</h2>
+    </div>
 
-    <div class="input-group">
-      <input type="submit" name="Make another Search">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Resturant</h2>
+          <h3>{{ result.restaurant.name }}</h3>
+          <p><b>Address:</b> {{ result.restaurant.address }}</p>
+          <p><b>Cuisine:</b> {{result.restaurant.cuisine}}</p>
+        </div>
+        <div class="col-md-4">
+          <h2>Food Truck</h2>
+          <h3>{{ result.foodtruck.name }}</h3>
+          <p><b>Address:</b> {{ result.foodtruck.address }}</p>
+          <p><b>Cuisine:</b> {{ result.foodtruck.cuisine }}</p>
+        </div>
+        <div class="col-md-4">
+          <h2>Museum</h2>
+          <h3>{{ result.museum.name }}</h3>
+          <p><b>Style:</b> {{ result.museum.style }}</p>
+          <p><b>Gallery:</b> {{ result.museum.gallery }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-group">
+      <button type="button" class="btn btn-default" ng-click="resetForm()">Go back</button>
     </div>
   </div>
 </div>
