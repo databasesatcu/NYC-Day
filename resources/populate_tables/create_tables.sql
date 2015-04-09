@@ -2,7 +2,7 @@
 USE cs4111;
 
 CREATE TABLE users (
-	uid INTEGER,
+	uid INTEGER UNIQUE,
 	user_name CHAR(15),
 	money_range INTEGER,
 	interests CHAR(20),
