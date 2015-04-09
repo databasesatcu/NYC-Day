@@ -19,6 +19,41 @@ exports.allRows = function (req, res) {
 
 };
 
+exports.newusers = function (req, res) {
+    var query = "select count(*) as num from users;";
+    var post = "";
+    console.log("GARYGARYGARY1");
+    pool.query(query, function(err, rows, field) {
+    	if (!err) {
+    		console.log('neighborhoodMuseums requested!');
+    		res.json(rows);
+    		console.log(rows);
+    		var number = rows[0].num;
+    		post = "INSERT INTO users VALUES ("+ number+1 + ", '" + req.body.username + "', " + 20 + " '" + req.body.interests + "');";
+    		
+    		pool.query(post, function(err, rows, field){
+				if (err) {
+					console.log("error in the post of newusers");
+				}
+				else {
+					console.log("GARYGARYGARY2");
+				}
+			});
+    		
+
+  		} else
+    		console.log('Error while performing Query.');
+ 
+  	});
+
+ //  	pool.query(post, function(err, rows, field){
+	// 	if (err) {
+	// 		console.log("error in the post of newusers");
+	// 	}
+	// });
+};
+
+
 exports.neighborhoodMuseums = function (req, res) {
     var query = "SELECT area_name, museum_name, style FROM neighborhood N, area_museum M WHERE N.nid = M.nid";
     pool.query(query, function(err, rows, field) {
