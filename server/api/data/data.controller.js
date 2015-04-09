@@ -20,7 +20,7 @@ exports.allRows = function (req, res) {
 };
 
 exports.neighborhoodMuseums = function (req, res) {
-    var query = "SELECT area_name, museum_name, style FROM neighborhood N, area_museum M WHERE N.nid = M.nid";
+    var query = "SELECT area_name, museum_namem, style FROM neighborhood N, area_museum M WHERE N.nid = M.nid";
     pool.query(query, function(err, rows, field) {
     	if (!err) {
     		console.log('Museums within neighborhood requested!');
@@ -61,6 +61,18 @@ exports.museumGallery = function (req, res) {
     pool.query(query, function(err, rows, field) {
     	if (!err) {
     		console.log('Galleries within museum requested!');
+    		res.json(rows);
+  		} else
+    		console.log('Error while performing Query.');
+ 
+  	});
+};
+
+exports.cuisine = function (req, res) {
+    var query = "SELECT DISTINCT F.cuisine FROM area_food_truck F, area_restaurants R;";
+    pool.query(query, function(err, rows, field) {
+    	if (!err) {
+    		console.log('Cuisines requested!');
     		res.json(rows);
   		} else
     		console.log('Error while performing Query.');
