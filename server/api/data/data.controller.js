@@ -32,7 +32,7 @@ exports.neighborhoodMuseums = function (req, res) {
 };
 
 exports.searchgallery = function (req, res) {
-    var query = "SELECT museum_name, gallery_name FROM area_museum M, gallery G, gallery_showcases S WHERE G.gallery_id = S.gallery_id and M.museum_id = S.museum_id and museum_name = '" + req.body.museum + "'";
+    var query = "SELECT museum_name, gallery_name FROM area_museum M, gallery G, gallery_showcases S WHERE G.gallery_id = S.gallery_id and M.museum_id = S.museum_id and museum_name = \"" + req.body.museum + "\"";
     pool.query(query, function(err, rows, field) {
     	if (!err) {
     		console.log('searchgallery requested!');
