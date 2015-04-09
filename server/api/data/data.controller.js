@@ -31,6 +31,18 @@ exports.neighborhoodMuseums = function (req, res) {
   	});
 };
 
+exports.searchgallery = function (req, res) {
+    var query = "SELECT museum_name, gallery_name FROM area_museum M, gallery G, gallery_showcases S WHERE G.gallery_id = S.gallery_id and M.museum_id = S.museum_id and museum_name = '" + req.body.museum + "'";
+    pool.query(query, function(err, rows, field) {
+    	if (!err) {
+    		console.log('Galleries within museum requested!');
+    		res.json(rows);
+  		} else
+    		console.log('Error while performing Query.');
+ 
+  	});
+};
+
 exports.searchmuseum = function (req, res) {
     var query = "SELECT area_name, museum_name, gallery_name, style FROM area_museum M, gallery G, gallery_showcases S, neighborhood N  WHERE G.gallery_id = S.gallery_id and M.museum_id = S.museum_id and N.nid = M.nid AND area_name = '" + req.body.neighborhood.area_name + "'";
     pool.query(query, function(err, rows, field) {
