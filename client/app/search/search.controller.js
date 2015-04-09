@@ -7,10 +7,10 @@ angular.module('nycDayApp')
 
     var instantiate = function() {
       $scope.user = {};
-      $scope.user.email = 'herbert@gmail.com';
-      $scope.user.neighborhood = 'GREENWICH VILLAGE';
+      $scope.user.email = '';
+      $scope.user.neighborhood = '';
       $scope.user.priceRange = 10;
-      $scope.user.cuisine = 'MEXICAN';
+      $scope.user.cuisine = '';
       $scope.user.start = '09:00';
       $scope.user.end = '20:00';
       $scope.user.gallery = 'GOYA';

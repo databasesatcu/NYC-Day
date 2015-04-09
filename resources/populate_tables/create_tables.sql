@@ -2,8 +2,8 @@
 USE cs4111;
 
 CREATE TABLE users (
-	uid INTEGER UNIQUE,
-	user_name CHAR(15),
+	uid INTEGER,
+	user_name CHAR(15) UNIQUE,
 	money_range INTEGER,
 	interests CHAR(20),
 	PRIMARY KEY (uid)
