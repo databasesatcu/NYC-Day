@@ -1,13 +1,53 @@
-<div class="container" ng-controller="SearchCtrl">
-  <form>
+<div class="container" ng-controller="SearchCtrl" ng-submit="search()">
+  <form ng-show="showForm">
     <div class="form-group">
       <label for="newUserEmail">Email:</label>
-      <input type="email" class="form-control" id="newUserEmail" placeholder="Enter email" ng-model="userEmail" required>
+      <input type="email" class="form-control" id="newUserEmail" placeholder="Enter email" ng-model="user.email" required>
     </div>
+
     <div class="form-group">
       <label for="neighborhood">Neighborhood:</label>
-      <select class="form-control" id="neighborhood" ng-model="userNeighborhood" ng-options="place.area_name for place in neighborhoods" required>
+      <select class="form-control" id="neighborhood" ng-model="user.neighborhood" ng-options="place.area_name for place in neighborhoods" required>
       </select>
     </div>
+
+    <div class="form-group">
+      <label for="newUserPriceRange">Price range:</label>
+      <input type="number" class="form-control" id="newUserPriceRange" placeholder="$10.00" ng-model="user.priceRange">
+    </div>
+
+    <div class="form-group">
+      <label for="newUserCuisine">Cuisines:</label>
+      <select class="form-control" id="newUserCuisine" ng-model="user.cuisine" ng-options="item.cuisine for item in cuisines" required>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <label for="newUserStart">Start time:</label>
+        <input type="time" class="form-control" id="newUserStart" ng-model="user.start">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <label for="newUserEnd">End time:</label>
+        <input type="time" class="form-control" id="newUserEnd" ng-model="user.end">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="newUserGallery">Gallery:</label>
+      <select class="form-control" id="newUserGallery" ng-model="user.gallery" ng-options="item.gallery_name for item in galleries" required>
+      </select>
+    </div>
+      <input type="submit" class="form-control" name="Submit">
   </form>
+
+  <div class="container" ng-show="showResult">
+
+    <div class="input-group">
+      <input type="submit" name="Make another Search">
+    </div>
+  </div>
 </div>
