@@ -2,36 +2,49 @@
 
 angular.module('nycDayApp')
   .controller('SearchCtrl', function ($scope, $http) {
-    $scope.showForm = true;
-    $scope.showResult = false;
 
-    var instantiate = function() {
-      $scope.user = {};
-      $scope.user.email = '';
-      $scope.user.neighborhood = '';
-      $scope.user.priceRange = 10;
-      $scope.user.cuisine = '';
-      $scope.user.start = '09:00';
-      $scope.user.end = '20:00';
-      $scope.user.gallery = 'GOYA';
-    };
-
-    instantiate();
+    $scope.user = {};
+    $scope.neighborhoods = [];
+    $scope.cuisines = [];
+    $scope.galleries = [];
 
     $http.get('/api/data/neighborhood')
       .success(function(data) {
         $scope.neighborhoods = data;
+        $scope.user.neighborhood = data[0];
       });
 
     $http.get('/api/data/cuisines')
       .success(function (data) {
         $scope.cuisines = data;
+        $scope.user.cuisine = data[0];
       });
 
     $http.get('/api/data/gallery')
       .success(function (data) {
         $scope.galleries = data;
+        $scope.user.gallery = data[0]
       });
+
+    $scope.user.email = '';
+    $scope.user.priceRange = 10.00;
+    $scope.user.cuisine = $scope.cuisines[0];
+    $scope.user.start = new Date('09:00:00');
+    $scope.user.end = new Date('20:00:00');
+
+    var instantiate = function() {
+      $scope.user = {};
+      $scope.user.email = '';
+      $scope.user.neighborhood = $scope.neighborhoods[0];
+      $scope.user.priceRange = 10.00;
+      $scope.user.cuisine = $scope.cuisines[0];
+      $scope.user.start = new Date('09:00:00');
+      $scope.user.end = new Date('20:00:00');
+      $scope.user.gallery = $scope.galleries[0];
+    };
+
+    $scope.showForm = true;
+    $scope.showResult = false;
 
     $scope.search = function () {
 
