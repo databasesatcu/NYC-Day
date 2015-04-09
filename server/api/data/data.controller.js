@@ -42,7 +42,8 @@ exports.basicsearch = function (req, res) {
     		res.json(rows);
   		} else
     		console.log('Error while performing Query.');
-    		console.log(req.body);
+    		// console.log(req.body);
+    		console.log(req.body.neighborhood.area_name);
  
   	});
 };
