@@ -35,6 +35,13 @@ angular.module('nycDayApp')
 
     $scope.search = function () {
 
+      $http.post('/api/data/newusers', {
+          username  : $scope.user.email,
+          interests : $scope.user.interests
+        }).success(function () {
+            console.log("new user entered!");
+          });
+
       var searchObject = {
         neighborhood : $scope.user.neighborhood,
         cuisine      : $scope.user.cuisine,
@@ -112,14 +119,6 @@ angular.module('nycDayApp')
         }
       });
 
-      // New user data
-      $http.post('/api/data/newuser', {
-        username : $scope.user.email,
-        interests : $scope.user.interests
-      }).success(function () {
-        console.log("new user entered!");
-      });
-
       $scope.showForm = false;
       $scope.showResult = true;
 
@@ -130,6 +129,6 @@ angular.module('nycDayApp')
       instantiate();
 
       $scope.showResult = false;
-      $scope.showForm = true;
+     $scope.showForm = true;
     }
   });
