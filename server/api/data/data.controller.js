@@ -23,14 +23,17 @@ exports.newusers = function (req, res) {
     var query = "select count(*) as num from users;";
     var post = "";
     console.log("GARYGARYGARY1");
+
     pool.query(query, function(err, rows, field) {
     	if (!err) {
     		console.log('neighborhoodMuseums requested!');
     		res.json(rows);
     		console.log(rows);
     		var number = rows[0].num;
-    		post = "INSERT INTO users VALUES ("+ number+1 + ", '" + req.body.username + "', " + 20 + " '" + req.body.interests + "');";
+    		post = "INSERT INTO users VALUES ("+ (parseInt(number)+1) + ", '" + req.body.username + "', " + 20 + ", '" + req.body.interests + "');";
     		
+    		console.log("LOOK HERE PLEASE: " + req);
+
     		pool.query(post, function(err, rows, field){
 				if (err) {
 					console.log("error in the post of newusers");

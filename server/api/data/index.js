@@ -14,7 +14,7 @@ router.post('/searchgallery', controller.searchgallery);
 router.get('/gallerylist', controller.gallery);
 router.get('/visits', controller.visits);
 router.get('/cuisines', controller.cuisine);
-router.get('/newusers', controller.newusers);
+router.post('/newusers', controller.newusers);
 router.post('/searchmuseum', controller.searchmuseum);
 router.post('/searchmuseumgallery', controller.searchmuseumgallery);
 router.post('/searchrestaurantcuisine', controller.searchrestaurantcuisine);
