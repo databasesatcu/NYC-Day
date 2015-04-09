@@ -13,7 +13,12 @@ router.get('/museumgallery', controller.museumGallery);
 router.get('/gallerylist', controller.gallery);
 router.get('/visits', controller.visits);
 router.get('/cuisines', controller.cuisine);
-router.post('/basicsearch', controller.basicsearch);
+
+router.post('/searchmuseum', controller.searchmuseum);
+router.post('/searchrestaurant', controller.searchrestaurant);
+router.post('/searchfoodtruck', controller.searchfoodtruck);
+
+
 router.get('/:item', controller.allRows);
 
 module.exports = router;
