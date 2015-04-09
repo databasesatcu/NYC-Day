@@ -15,6 +15,7 @@ router.get('/visits', controller.visits);
 router.get('/cuisines', controller.cuisine);
 
 router.post('/searchmuseum', controller.searchmuseum);
+router.post('/searchmuseumgallery', controller.searchmuseumgallery);
 router.post('/searchrestaurantcuisine', controller.searchrestaurantcuisine);
 router.post('/searchrestaurant', controller.searchrestaurant);
 router.post('/searchfoodtruck', controller.searchfoodtruck);
