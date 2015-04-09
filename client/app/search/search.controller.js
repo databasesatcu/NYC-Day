@@ -80,12 +80,20 @@ angular.module('nycDayApp')
       // Museum
       $http.post('/api/data/searchmuseumgallery', searchObject).success(function(data) {
         $scope.result.museum = {};
+        $scope.result.galleries = [];
         var museumName = '';
         if (data.length) {
           $scope.result.museum.name = data[0].museum_name;
           museumName = data[0].museum_name;
           $scope.result.museum.style = data[0].style;
           $scope.result.museum.gallery = data[0].gallery_name;
+
+          $http.post('/api/data/searchgallery', { museum: museumName }).success(function (data2) {
+            if (data2.length)
+              $scope.result.galleries = data2;
+            else
+              $scope.result.galleries = [{gallery_name: "No galleries."}];
+          });
         } else {
           console.log('first query failed.');
           $http.post('/api/data/searchmuseum', searchObject).success(function (data1) {
@@ -93,13 +101,23 @@ angular.module('nycDayApp')
             museumName = data1[0].museum_name;
             $scope.result.museum.style = data1[0].style;
             $scope.result.museum.gallery = data1[0].gallery_name;
+
+            $http.post('/api/data/searchgallery', {museum: museumName}).success(function (data2) {
+              if (data2.length)
+                $scope.result.galleries = data2;
+              else
+                $scope.result.galleries = [{gallery_name: "No galleries."}];
+            });
           });
         }
+      });
 
-        $http.post('/api/data/searchgallery', { museum: museumName }).success(function (data2) {
-          console.log(data2);
-        });
-
+      // New user data
+      $http.post('/api/data/newuser', {
+        username : $scope.user.email,
+        interests : $scope.user.interests
+      }).success(function () {
+        console.log("new user entered!");
       });
 
       $scope.showForm = false;

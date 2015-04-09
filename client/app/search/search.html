@@ -52,22 +52,23 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4">
-          <h2>Resturant</h2>
-          <h3>{{ result.restaurant.name }}</h3>
+          <h2>Resturant:</h2>
+          <h4>{{ result.restaurant.name }}</h4>
           <p><b>Address:</b> {{ result.restaurant.address }}</p>
           <p><b>Cuisine:</b> {{result.restaurant.cuisine}}</p>
         </div>
         <div class="col-md-4">
-          <h2>Food Truck</h2>
-          <h3>{{ result.foodtruck.name }}</h3>
+          <h2>Food Truck:</h2>
+          <h4>{{ result.foodtruck.name }}</h4>
           <p><b>Address:</b> {{ result.foodtruck.address }}</p>
           <p><b>Cuisine:</b> {{ result.foodtruck.cuisine }}</p>
         </div>
         <div class="col-md-4">
-          <h2>Museum</h2>
-          <h3>{{ result.museum.name }}</h3>
+          <h2>Museum:</h2>
+          <h4>{{ result.museum.name }}</h4>
           <p><b>Style:</b> {{ result.museum.style }}</p>
-          <p><b>Gallery:</b> {{ result.museum.gallery }}</p>
+          <p><b>Galleries:</b></p>
+          <p ng-repeat="gallery in result.galleries"> &nbsp;&nbsp;&nbsp;&nbsp; {{ gallery.gallery_name }}</p>
         </div>
       </div>
     </div>
