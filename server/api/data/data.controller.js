@@ -20,7 +20,32 @@ exports.allRows = function (req, res) {
 };
 
 exports.neighborhoodMuseums = function (req, res) {
-    var query = "SELECT area_name, museum_namem, style FROM neighborhood N, area_museum M WHERE N.nid = M.nid";
+    var query = "SELECT area_name, museum_name, style FROM neighborhood N, area_museum M WHERE N.nid = M.nid";
+    pool.query(query, function(err, rows, field) {
+    	if (!err) {
+    		console.log('Museums within neighborhood requested!');
+    		res.json(rows);
+  		} else
+    		console.log('Error while performing Query.');
+ 
+  	});
+};
+
+exports.basicsearch = function (req, res) {
+    var query = "SELECT area_name, museum_name, style FROM neighborhood N, area_museum M WHERE N.nid = M.nid AND area_name = " + req.neighborhood;
+    pool.query(query, function(err, rows, field) {
+    	if (!err) {
+    		console.log('Neighborhood requested!');
+    		res.json(rows);
+  		} else
+    		console.log('Error while performing Query.');
+ 
+  	});
+};
+
+
+exports.neighborhoodMuseumsSpecific = function (req, res) {
+    var query = "SELECT area_name, museum_name, style FROM neighborhood N, area_museum M WHERE N.nid = M.nid AND area_name = " + req.params.neighborhood;
     pool.query(query, function(err, rows, field) {
     	if (!err) {
     		console.log('Museums within neighborhood requested!');
@@ -82,6 +107,18 @@ exports.cuisine = function (req, res) {
 
 exports.gallery = function (req, res) {
     var query = "SELECT gallery_name as gallery FROM gallery;";
+    pool.query(query, function(err, rows, field) {
+    	if (!err) {
+    		console.log('Cuisines requested!');
+    		res.json(rows);
+  		} else
+    		console.log('Error while performing Query.');
+ 
+  	});
+};
+
+exports.visits = function (req, res) {
+    var query = "SELECT user_name as user, area_name as neighborhood FROM users U, users_visit V, neighborhood N WHERE U.uid = V.uid AND N.nid = V.nid;";
     pool.query(query, function(err, rows, field) {
     	if (!err) {
     		console.log('Cuisines requested!');
