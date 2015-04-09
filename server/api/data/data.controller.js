@@ -32,7 +32,7 @@ exports.neighborhoodMuseums = function (req, res) {
 };
 
 exports.basicsearch = function (req, res) {
-    var query = "SELECT area_name, museum_name, style FROM neighborhood N, area_museum M WHERE N.nid = M.nid AND area_name = " + req.neighborhood;
+    var query = "SELECT area_name, museum_name, style FROM neighborhood N, area_museum M WHERE N.nid = M.nid AND area_name = " + req.body.neighborhood.area_name;
     pool.query(query, function(err, rows, field) {
     	if (!err) {
     		console.log('Neighborhood requested!');
