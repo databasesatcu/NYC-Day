@@ -40,10 +40,12 @@ exports.basicsearch = function (req, res) {
     		console.log(rows);
 
     		res.json(rows);
-  		} else
+  		} else {
     		console.log('Error while performing Query.');
-    		// console.log(req.body);
+    		console.log(req.body);
+    		console.log(" break break break");
     		console.log(req.body.neighborhood.area_name);
+    	}
  
   	});
 };
